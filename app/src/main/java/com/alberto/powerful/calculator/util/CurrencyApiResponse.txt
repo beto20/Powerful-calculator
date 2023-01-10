@@ -1,0 +1,15 @@
+/* GET /convert */
+{
+  "date": "2023-01-05",
+  "info": {
+    "rate": 0.260311,
+    "timestamp": 1672936144
+  },
+  "query": {
+    "amount": 100,
+    "from": "PEN",
+    "to": "USD"
+  },
+  "result": 26.0311,
+  "success": true
+}

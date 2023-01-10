@@ -2,9 +2,27 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/init_graph"
-    app:startDestination="@id/calculatorFragment">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/initFragment">
 
+    <fragment
+        android:id="@+id/initFragment"
+        android:name="com.alberto.powerful.calculator.ui.init.InitFragment"
+        android:label="fragment_init"
+        tools:layout="@layout/fragment_init" >
+        <action
+            android:id="@+id/action_initFragment_to_calculatorFragment"
+            app:destination="@id/calculatorFragment" />
+        <action
+            android:id="@+id/action_initFragment_to_currencyFragment"
+            app:destination="@id/currencyFragment" />
+        <action
+            android:id="@+id/action_initFragment_to_recordFragment"
+            app:destination="@id/recordFragment" />
+        <action
+            android:id="@+id/action_initFragment_to_configurationFragment"
+            app:destination="@id/configurationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/calculatorFragment"
         android:name="com.alberto.powerful.calculator.ui.calculator.CalculatorFragment"
@@ -14,22 +32,20 @@
             android:id="@+id/action_calculatorFragment_to_currencyFragment"
             app:destination="@id/currencyFragment" />
         <action
-            android:id="@+id/action_calculatorFragment_to_configurationFragment"
-            app:destination="@id/configurationFragment" />
-        <action
             android:id="@+id/action_calculatorFragment_to_recordFragment"
             app:destination="@id/recordFragment" />
+        <action
+            android:id="@+id/action_calculatorFragment_to_configurationFragment"
+            app:destination="@id/configurationFragment" />
     </fragment>
     <fragment
         android:id="@+id/currencyFragment"
         android:name="com.alberto.powerful.calculator.ui.currency.CurrencyFragment"
-        android:label="fragment_currency"
-        tools:layout="@layout/fragment_currency" />
+        android:label="CurrencyFragment" />
     <fragment
         android:id="@+id/configurationFragment"
         android:name="com.alberto.powerful.calculator.ui.configuration.ConfigurationFragment"
-        android:label="fragment_configuration"
-        tools:layout="@layout/fragment_configuration" />
+        android:label="ConfigurationFragment" />
     <fragment
         android:id="@+id/recordFragment"
         android:name="com.alberto.powerful.calculator.ui.history.RecordFragment"

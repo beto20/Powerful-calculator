@@ -1,6 +1,12 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    // Pluggin para Kapt
+    id 'kotlin-kapt'
+    // Pluggin para Dagger hilt
+    id 'dagger.hilt.android.plugin'
+    // Plugin para la navegacion
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -48,4 +54,23 @@ dependencies {
     // Dependencias de Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
+
+    // Dependencia de Dagger Hilt
+    implementation 'com.google.dagger:hilt-android:2.42'
+    kapt 'com.google.dagger:hilt-compiler:2.42'
+
+    // Dependencias de Room
+    implementation 'androidx.room:room-ktx:2.4.3'
+    implementation 'androidx.room:room-runtime:2.4.3'
+    kapt 'androidx.room:room-compiler:2.4.3'
+
+    // Dependencias de Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // Dependencia de loggin-interceptor es para generar log de los servicios
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
+
+    implementation 'io.arrow-kt:arrow-core:1.1.2'
+
 }
