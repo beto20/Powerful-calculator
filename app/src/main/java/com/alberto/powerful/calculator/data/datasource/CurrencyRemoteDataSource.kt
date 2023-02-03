@@ -1,4 +1,4 @@
-package com.alberto.powerful.calculator.data.remote
+package com.alberto.powerful.calculator.data.datasource
 
 import arrow.core.Either
 import com.alberto.powerful.calculator.domain.Converter

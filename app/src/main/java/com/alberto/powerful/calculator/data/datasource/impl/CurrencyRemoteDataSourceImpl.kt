@@ -1,11 +1,11 @@
-package com.alberto.powerful.calculator.data.remote.impl
+package com.alberto.powerful.calculator.data.datasource.impl
 
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
 import com.alberto.powerful.calculator.data.client.CurrencyConverterClient
 import com.alberto.powerful.calculator.data.dto.AmountConvertResponse
-import com.alberto.powerful.calculator.data.remote.CurrencyRemoteDataSource
+import com.alberto.powerful.calculator.data.datasource.CurrencyRemoteDataSource
 import com.alberto.powerful.calculator.domain.*
 import com.alberto.powerful.calculator.util.Constants
 import com.alberto.powerful.calculator.util.ErrorCatalog

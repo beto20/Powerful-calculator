@@ -57,11 +57,16 @@ class CurrencyFragment : Fragment(R.layout.fragment_currency,) {
                 CurrencyViewModel.CurrencyState.Init -> Unit
                 is CurrencyViewModel.CurrencyState.Error -> Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
                 is CurrencyViewModel.CurrencyState.SuccessConvert -> {
+                    persistRecordCurrency(it.converter)
                     binding.edtIngressAmountResponse.setText(it.converter.result.toString())
                 }
             }
         }
     }
 
-
+    private fun persistRecordCurrency(converter: Converter) {
+        val toAmount = "${converter.query.to} : ${converter.result}"
+        val fromAmount = "${converter.query.from} : ${converter.query.amount}"
+        viewModel.saveRecord(toAmount, fromAmount)
+    }
 }

@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.alberto.powerful.calculator.data.dto.RecordCurrencyRequest
 import com.alberto.powerful.calculator.domain.Converter
 import com.alberto.powerful.calculator.usecase.ConvertCurrency
+import com.alberto.powerful.calculator.usecase.InsertRecordCurrency
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,11 +17,18 @@ import javax.inject.Inject
 @HiltViewModel
 class CurrencyViewModel @Inject constructor(
     private val convertCurrency: ConvertCurrency,
+    private val insertRecordCurrency: InsertRecordCurrency,
 ): ViewModel() {
 
 
     private val _state = MutableLiveData<CurrencyState>(CurrencyState.Init)
     val state: LiveData<CurrencyState> = _state
+
+    fun saveRecord(to: String, from: String) {
+        viewModelScope.launch {
+            insertRecordCurrency.invoke(RecordCurrencyRequest(to, from))
+        }
+    }
 
     fun convert(to: String, from: String, amount: Float) {
         viewModelScope.launch {

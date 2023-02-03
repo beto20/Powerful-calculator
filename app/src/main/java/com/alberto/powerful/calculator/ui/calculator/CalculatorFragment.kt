@@ -4,13 +4,17 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.alberto.powerful.calculator.R
 import com.alberto.powerful.calculator.databinding.FragmentCalculatorBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CalculatorFragment : Fragment(R.layout.fragment_calculator) {
 
     private lateinit var binding: FragmentCalculatorBinding
+    private val viewModel: CalculatorViewModel by viewModels()
 
     private var firstNumber = 0.0F
     private var secondNumber = 0.0F
@@ -86,21 +90,40 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator) {
     }
 
     private fun calculate() = with(binding) {
-        val result = when(operation) {
+        var completeOperation = ""
+        var result = 0.0F
+
+        when(operation) {
             "DIVIDE" -> {
                 if (firstNumber != 0.0F) {
-                    firstNumber / secondNumber
+                    result = firstNumber / secondNumber
+                    completeOperation = "$firstNumber / $secondNumber"
                 } else {
                     tvResult.text = firstNumber.toString()
                     return@with
                 }
             }
-            "MULTI" -> firstNumber * secondNumber
-            "MINUS" -> firstNumber - secondNumber
-            "PLUS" -> firstNumber + secondNumber
-            else -> 0.0
+            "MULTI" -> {
+                result = firstNumber * secondNumber
+                completeOperation = "$firstNumber * $secondNumber"
+            }
+            "MINUS" -> {
+                result = firstNumber - secondNumber
+                completeOperation = "$firstNumber - $secondNumber"
+            }
+            "PLUS" -> {
+                result = firstNumber + secondNumber
+                completeOperation = "$firstNumber + $secondNumber"
+            }
+            else -> {
+                result = 0.0F
+            }
         }
-        tvResult.text = if("$result".endsWith(".0")) "$result".replace(".0","") else "%.2f".format(result)
+
+        val finalResult = if("$result".endsWith(".0")) "$result".replace(".0","") else "%.2f".format(result)
+
+        tvResult.text = finalResult
+        viewModel.saveRecord(completeOperation, "= $finalResult")
     }
 
     private fun operationPressed(operationType: String) = with(binding) {

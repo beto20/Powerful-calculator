@@ -1,7 +1,7 @@
 package com.alberto.powerful.calculator.data.repository
 
 import arrow.core.Either
-import com.alberto.powerful.calculator.data.remote.CurrencyRemoteDataSource
+import com.alberto.powerful.calculator.data.datasource.CurrencyRemoteDataSource
 import com.alberto.powerful.calculator.domain.Converter
 import com.alberto.powerful.calculator.util.ErrorCatalog
 import javax.inject.Inject

@@ -3,7 +3,6 @@ package com.alberto.powerful.calculator.data.client
 import com.alberto.powerful.calculator.data.dto.*
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CurrencyConverterClient {

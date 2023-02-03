@@ -16,3 +16,13 @@ data class Query(
     val from: String,
     val to: String
 )
+
+data class RecordResponse (
+    val operation: String,
+    val result: String
+)
+
+data class RecordCurrencyResponse (
+    val from: String,
+    val to: String,
+)
