@@ -1,7 +1,10 @@
 *.iml
 .gradle
+.idea
 /local.properties
 /.idea/caches
+/.idea/codestream.xml
+/.idea/sonarlint/*
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml

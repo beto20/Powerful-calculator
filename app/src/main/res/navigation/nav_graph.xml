@@ -41,11 +41,13 @@
     <fragment
         android:id="@+id/currencyFragment"
         android:name="com.alberto.powerful.calculator.ui.currency.CurrencyFragment"
-        android:label="CurrencyFragment" />
+        android:label="fragment_currency"
+        tools:layout="@layout/fragment_currency" />
     <fragment
         android:id="@+id/configurationFragment"
         android:name="com.alberto.powerful.calculator.ui.configuration.ConfigurationFragment"
-        android:label="ConfigurationFragment" />
+        android:label="fragment_configuration"
+        tools:layout="@layout/fragment_configuration" />
     <fragment
         android:id="@+id/recordFragment"
         android:name="com.alberto.powerful.calculator.ui.history.RecordFragment"

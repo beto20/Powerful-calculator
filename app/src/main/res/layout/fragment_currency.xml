@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/specialButtons"
     tools:context=".MainActivity">
 
 
@@ -32,7 +32,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
         android:layout_width="wrap_content"
@@ -43,9 +42,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiCurrency"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Divisa origen"
+        android:textColorHint="@color/black"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -58,15 +58,19 @@
             android:id="@+id/spCurrency"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:textColorHint="@color/black"
+            android:textStyle="bold"
             android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiCurrencyRequested"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Divisa requerida"
+        android:textColorHint="@color/black"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -82,6 +86,9 @@
             android:id="@+id/spCurrencyRequested"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:textColorHint="@color/black"
+            android:textStyle="bold"
             android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,6 +106,7 @@
         android:layout_height="53dp"
         android:layout_marginTop="25dp"
         android:hint="Monto para convertir"
+        android:textColorHint="@color/black"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -111,7 +119,11 @@
             android:id="@+id/edtIngressAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:layout_marginHorizontal="10dp"
+            android:textColorHint="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -120,6 +132,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:hint="Divisa convertido"
+        android:textColorHint="@color/black"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -132,7 +145,11 @@
             android:id="@+id/edtIngressAmountResponse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"/>
+            android:layout_marginHorizontal="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:inputType="none"
+            android:focusable="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -142,6 +159,9 @@
         android:layout_marginTop="40dp"
         android:layout_marginHorizontal="32dp"
         android:text="Convertir"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/operationButtons"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

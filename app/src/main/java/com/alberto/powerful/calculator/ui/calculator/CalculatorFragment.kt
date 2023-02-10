@@ -26,7 +26,6 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator) {
         binding = FragmentCalculatorBinding.bind(view)
 
         events()
-        navigationEvents()
     }
 
     private fun events() {
@@ -34,22 +33,6 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator) {
         operationPressedEvents()
         calculateEvent()
         cleanScreenEvent()
-    }
-
-    private fun navigationEvents() {
-
-        binding.ivCurrency.setOnClickListener {
-            findNavController().navigate(CalculatorFragmentDirections.actionCalculatorFragmentToCurrencyFragment())
-        }
-
-        binding.ivHistory.setOnClickListener {
-            findNavController().navigate(CalculatorFragmentDirections.actionCalculatorFragmentToRecordFragment())
-        }
-
-        binding.ivSettings.setOnClickListener {
-            findNavController().navigate(CalculatorFragmentDirections.actionCalculatorFragmentToConfigurationFragment())
-        }
-
     }
 
     private fun numberPressedEvents() = with(binding) {
