@@ -7,4 +7,5 @@ interface RecordLocalDataSource {
 
     suspend fun insert(record: Record)
     fun getAll(): Flow<List<Record>>
+    suspend fun deleteAllRecords()
 }

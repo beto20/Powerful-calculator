@@ -20,6 +20,10 @@ class RecordCurrencyRepository @Inject constructor(private val recordCurrencyLoc
         }
     }
 
+    suspend fun deleteAllRecordsCurrency() {
+        recordCurrencyLocalDataSource.deleteAllRecordsCurrency();
+    }
+
     /* MAPPERS */
     private fun List<RecordCurrency>.toResponseList(): List<RecordCurrencyResponse> = map {
         it.toResponse()

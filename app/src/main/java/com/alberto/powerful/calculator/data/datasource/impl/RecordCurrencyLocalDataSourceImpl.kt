@@ -8,7 +8,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class RecordCurrencyLocalDataSourceImpl @Inject constructor(private val recordCurrencyDao: RecordCurrencyDao) : RecordCurrencyLocalDataSource {
+class RecordCurrencyLocalDataSourceImpl @Inject constructor(
+    private val recordCurrencyDao: RecordCurrencyDao
+) : RecordCurrencyLocalDataSource {
 
     override suspend fun insert(recordCurrency: RecordCurrency) {
         recordCurrencyDao.insert(recordCurrency.toEntity())
@@ -17,6 +19,13 @@ class RecordCurrencyLocalDataSourceImpl @Inject constructor(private val recordCu
     override fun getAll(): Flow<List<RecordCurrency>> {
         return recordCurrencyDao.getAll().map {
             it.toDomainList()
+        }
+    }
+
+    override suspend fun deleteAllRecordsCurrency() {
+        val recordsCurrencyFlow = recordCurrencyDao.getAll()
+        recordsCurrencyFlow.collect {
+            recordCurrencyDao.deleteAllRecordsCurrency(it)
         }
     }
 

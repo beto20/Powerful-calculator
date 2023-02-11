@@ -3,6 +3,7 @@ package com.alberto.powerful.calculator.data.repository
 import com.alberto.powerful.calculator.data.datasource.RecordLocalDataSource
 import com.alberto.powerful.calculator.data.dto.RecordRequest
 import com.alberto.powerful.calculator.data.dto.RecordResponse
+import com.alberto.powerful.calculator.data.local.DbRecord
 import com.alberto.powerful.calculator.domain.Record
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -18,6 +19,10 @@ class RecordRepository @Inject constructor(private val recordRemoteDataSource: R
         return recordRemoteDataSource.getAll().map {
             it.toResponseList()
         }
+    }
+
+    suspend fun deleteAllRecords() {
+        recordRemoteDataSource.deleteAllRecords();
     }
 
     /* MAPPERS */

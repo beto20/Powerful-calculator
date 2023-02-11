@@ -1,6 +1,7 @@
 package com.alberto.powerful.calculator.data.local
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -14,4 +15,7 @@ interface RecordDao {
 
     @Query("SELECT *FROM tb_record")
     fun getAll(): Flow<List<DbRecord>>
+
+    @Delete
+    suspend fun deleteAllRecords(records: List<DbRecord>)
 }

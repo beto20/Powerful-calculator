@@ -7,4 +7,5 @@ interface RecordCurrencyLocalDataSource {
 
     suspend fun insert(recordCurrency: RecordCurrency)
     fun getAll(): Flow<List<RecordCurrency>>
+    suspend fun deleteAllRecordsCurrency()
 }

@@ -14,4 +14,6 @@
     <color name="numberButtons">#333333</color>
     <color name="operationButtons">#FEA009</color>
     <color name="specialButtons">#A5A5A5</color>
+    <color name="darkMode">#414549</color>
+    <color name="lightMode">#CDCDCB</color>
 </resources>
