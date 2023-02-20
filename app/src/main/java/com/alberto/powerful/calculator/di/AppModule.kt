@@ -1,6 +1,7 @@
 package com.alberto.powerful.calculator.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Room
 import com.alberto.powerful.calculator.data.client.CurrencyConverterClient
 import com.alberto.powerful.calculator.data.local.AppDatabase
@@ -58,6 +59,12 @@ class AppModule {
         AppDatabase::class.java,
         "dbCalculator"
     ).build()
+
+    @Singleton
+    @Provides
+    fun provideSharedPreference(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences("preferences_name", Context.MODE_PRIVATE)
+    }
 
     @Provides
     @Singleton

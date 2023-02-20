@@ -1,11 +1,13 @@
 package com.alberto.powerful.calculator.ui.history
 
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alberto.powerful.calculator.data.dto.RecordCurrencyResponse
 import com.alberto.powerful.calculator.data.dto.RecordResponse
 import com.alberto.powerful.calculator.usecase.GetAllRecord
 import com.alberto.powerful.calculator.usecase.GetAllRecordCurrency
+import com.alberto.powerful.calculator.util.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,11 +19,16 @@ import javax.inject.Inject
 @HiltViewModel
 class RecordViewModel @Inject constructor(
     private var getAllRecord: GetAllRecord,
-    private var getAllRecordCurrency: GetAllRecordCurrency
+    private var getAllRecordCurrency: GetAllRecordCurrency,
+    private val sharedPreferences: SharedPreferences
 ) :ViewModel() {
 
     private val _state = MutableStateFlow<RecordState>(RecordState.Init)
     val state: StateFlow<RecordState> get() = _state
+
+    fun getSwitchModeValue(): String {
+        return sharedPreferences.getString(Constants.SWITCH_PREFERENCE, "") ?: ""
+    }
 
     fun getAllRecord() {
         viewModelScope.launch {

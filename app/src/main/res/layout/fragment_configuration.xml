@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+    android:id="@+id/configurationFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkMode" >
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
-        android:text="Modo oscuro"
+        android:text="Modo claro"
         android:textColor="@color/numbers"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Switch
-        android:id="@+id/swLightMode"
+        android:id="@+id/swColorMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"

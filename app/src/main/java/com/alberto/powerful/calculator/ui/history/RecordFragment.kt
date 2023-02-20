@@ -1,5 +1,6 @@
 package com.alberto.powerful.calculator.ui.history
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -29,9 +30,18 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRecordBinding.bind(view)
 
+        validateColorPreference()
         init()
         setUpAdapter()
         collectData()
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private fun validateColorPreference() = with(binding) {
+        val mode = viewModel.getSwitchModeValue()
+        if (mode == "light") {
+            recordFragment.setBackgroundColor(R.color.lightMode)
+        }
     }
 
     private fun init() {

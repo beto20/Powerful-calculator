@@ -1,5 +1,6 @@
 package com.alberto.powerful.calculator.ui.currency
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -22,11 +23,20 @@ class CurrencyFragment : Fragment(R.layout.fragment_currency,) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCurrencyBinding.bind(view)
 
+        validateColorPreference()
         populateCurrencySymbols()
         setUpObserver()
 
         binding.btnConvert.setOnClickListener {
             convertCurrency()
+        }
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private fun validateColorPreference() = with(binding) {
+        val mode = viewModel.getSwitchModeValue()
+        if (mode == "light") {
+            currencyFragment.setBackgroundColor(R.color.lightMode)
         }
     }
 

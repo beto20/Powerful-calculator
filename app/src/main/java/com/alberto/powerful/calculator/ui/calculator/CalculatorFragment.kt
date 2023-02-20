@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.alberto.powerful.calculator.R
 import com.alberto.powerful.calculator.databinding.FragmentCalculatorBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +24,17 @@ class CalculatorFragment : Fragment(R.layout.fragment_calculator) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCalculatorBinding.bind(view)
 
+        validateColorPreference()
         events()
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private fun validateColorPreference() = with(binding) {
+        val mode = viewModel.getSwitchModeValue()
+        if (mode == "light") {
+            tvResult.setBackgroundColor(R.color.lightMode)
+            calculatorFragment.setBackgroundColor(R.color.lightMode)
+        }
     }
 
     private fun events() {

@@ -1,5 +1,6 @@
 package com.alberto.powerful.calculator.ui.currency
 
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import com.alberto.powerful.calculator.data.dto.RecordCurrencyRequest
 import com.alberto.powerful.calculator.domain.Converter
 import com.alberto.powerful.calculator.usecase.ConvertCurrency
 import com.alberto.powerful.calculator.usecase.InsertRecordCurrency
+import com.alberto.powerful.calculator.util.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,11 +20,16 @@ import javax.inject.Inject
 class CurrencyViewModel @Inject constructor(
     private val convertCurrency: ConvertCurrency,
     private val insertRecordCurrency: InsertRecordCurrency,
+    private val sharedPreferences: SharedPreferences
 ): ViewModel() {
 
 
     private val _state = MutableLiveData<CurrencyState>(CurrencyState.Init)
     val state: LiveData<CurrencyState> = _state
+
+    fun getSwitchModeValue(): String {
+        return sharedPreferences.getString(Constants.SWITCH_PREFERENCE, "") ?: ""
+    }
 
     fun saveRecord(to: String, from: String) {
         viewModelScope.launch {

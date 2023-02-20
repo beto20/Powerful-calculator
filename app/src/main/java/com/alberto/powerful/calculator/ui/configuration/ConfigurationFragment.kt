@@ -19,16 +19,37 @@ class ConfigurationFragment : Fragment(R.layout.fragment_configuration) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentConfigurationBinding.bind(view)
 
-        cleanCacheDataEvent()
+        validateColorPreference()
         changeStyleModeEvent()
+        cleanCacheDataEvent()
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private fun validateColorPreference() = with(binding) {
+        val mode = viewModel.getSwitchModeValue()
+        if (mode == "light") {
+            swColorMode.isChecked = true
+            binding.configurationFragment.setBackgroundColor(R.color.lightMode)
+        } else {
+            swColorMode.isChecked = false
+        }
     }
 
     @SuppressLint("ResourceAsColor")
     private fun changeStyleModeEvent() = with(binding) {
-        swLightMode.setOnClickListener {
-            // TODO:: add sharepreferences in order to persist the background color to the other views
-            if (swLightMode.isChecked) binding.frameLayout.setBackgroundColor(R.color.lightMode)
-            if (!swLightMode.isChecked) binding.frameLayout.setBackgroundColor(R.color.darkMode)
+        swColorMode.setOnClickListener {
+            var value = false
+            if (swColorMode.isChecked) {
+                value = true
+                binding.configurationFragment.setBackgroundColor(R.color.lightMode)
+                viewModel.saveSwitchModeValue("light")
+            }
+            if (!swColorMode.isChecked) {
+                value = false
+                binding.configurationFragment.setBackgroundColor(R.color.darkMode)
+                viewModel.saveSwitchModeValue("dark")
+            }
+            swColorMode.isChecked = value
         }
     }
 
