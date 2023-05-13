@@ -7,7 +7,7 @@ Technologies used: Kotlin, Room, Dagger Hilt, Retrofit
 
 ```bash
 $ ./gradlew build
-o
+or
 $ ./gradlew clean build 
 ```
 
