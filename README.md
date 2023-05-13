@@ -3,7 +3,7 @@ The powerful calculator app and currency exchange available for PEN, USD, and EU
 
 Technologies used: Kotlin, Room, Dagger Hilt, Retrofit
 
-## Instalation
+## Installation
 
 ```bash
 $ ./gradlew build
